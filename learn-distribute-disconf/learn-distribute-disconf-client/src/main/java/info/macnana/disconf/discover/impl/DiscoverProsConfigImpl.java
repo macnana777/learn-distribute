@@ -7,6 +7,8 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 import info.macnana.disconf.discover.DiscoverProsConfig;
 import info.macnana.disconf.model.PropertyConfig;
+import info.macnana.disconf.process.ProsProcess;
+import info.macnana.disconf.storage.AppNodeStorage;
 import info.macnana.reg.base.CoordinatorRegistryCenter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,12 +33,13 @@ public class DiscoverProsConfigImpl implements DiscoverProsConfig{
 
     private final CoordinatorRegistryCenter coordinatorRegistryCenter;
 
+    private final ProsProcess prosProcess;
+
     @Override
     public Map<String,Map<String,String>> getAppProsConfig(String appName) {
         String path = Joiner.on("/").join(Arrays.asList(PropertyConfig.ROOT_PATH,appName));
         List<String> keys = coordinatorRegistryCenter.getChildrenKeys(path);
         if(CollectionUtils.isNotEmpty(keys)){
-            coordinatorRegistryCenter.addCacheData(path);
             Map<String,Map<String,String>> appProsMap = Maps.newHashMap();
             for (String key: keys) {
                 path = Joiner.on("/").join(Arrays.asList(path,key));
@@ -46,8 +49,14 @@ public class DiscoverProsConfigImpl implements DiscoverProsConfig{
                     appProsMap.put(key,prosMap);
                 }
             }
+            registerAppNodeStorage(appName);
             return appProsMap;
         }
         return null;
+    }
+
+    private void registerAppNodeStorage(String appName){
+        AppNodeStorage appNodeStorage = new AppNodeStorage(coordinatorRegistryCenter,appName,prosProcess);
+        appNodeStorage.addDataProcess();
     }
 }

@@ -29,7 +29,7 @@ public class ListenerTest {
 
     @Test
     public void fileListener() throws IOException{
-        ListenerRegister listenerRegister = new FileListenerRegister(new FileListenerStrategy(),5);
+        ListenerRegister listenerRegister = new FileListenerRegister(new FileListenerStrategy(null),5);
         listenerRegister.register("C:\\WorkSpace\\learn\\learn-distribute\\learn-distribute-disconf\\learn-distribute-disconf-conf\\disconf");
         System.in.read();
     }

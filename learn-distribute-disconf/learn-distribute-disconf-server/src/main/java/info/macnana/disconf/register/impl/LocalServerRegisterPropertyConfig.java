@@ -1,5 +1,9 @@
 package info.macnana.disconf.register.impl;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import info.macnana.disconf.listener.register.ListenerRegister;
+import info.macnana.disconf.listener.register.impl.FileListenerRegister;
+import info.macnana.disconf.listener.strategy.impl.FileListenerStrategy;
 import info.macnana.disconf.model.PropertyConfig;
 import info.macnana.disconf.register.AbstractRegisterProsConfig;
 import info.macnana.disconf.util.PropertyUtil;
@@ -14,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.concurrent.*;
 
 /**
  * @author: zhengheng
@@ -30,10 +35,13 @@ public class LocalServerRegisterPropertyConfig extends AbstractRegisterProsConfi
     @Getter
     private final String scanPath;
 
-    /**
-     * 所有应用的属性<应用名，<属性文件名，属性>>
-     */
-    //private Table<String,String,Map<String,String>> prosTable =
+    private static Executor executor = new ThreadPoolExecutor(
+            20,
+            20,
+            0L,
+            TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(),
+            new ThreadFactoryBuilder().setDaemon(true).setNameFormat("listenerRegister-%s").build());
 
     public LocalServerRegisterPropertyConfig(CoordinatorRegistryCenter coordinatorRegistryCenter,String scanPath){
         super(coordinatorRegistryCenter);
@@ -62,6 +70,14 @@ public class LocalServerRegisterPropertyConfig extends AbstractRegisterProsConfi
                         propertyConfig.setProsMap(prosMap);
                         super.registry(propertyConfig);
                     }
+                    //启动文件监听
+                    executor.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            ListenerRegister listenerRegister = new FileListenerRegister(new FileListenerStrategy(coordinatorRegistryCenter),5);
+                            listenerRegister.register(appFile.getAbsolutePath());
+                        }
+                    });
                 }
             }
         } catch (IOException e) {

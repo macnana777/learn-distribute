@@ -17,7 +17,8 @@ public interface DiscoverProsConfig {
 
     /**
      * 获取各应用配置
-     * @return
+     * @param appName 应用名
+     * @return 返回该应用所有的属性 <属性文件名，所有属性>
      */
     Map<String,Map<String,String>> getAppProsConfig(String appName);
 

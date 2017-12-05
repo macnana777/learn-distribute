@@ -29,7 +29,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public abstract class AbstractRegisterProsConfig implements RegisterProsConfig{
 
-    private final CoordinatorRegistryCenter coordinatorRegistryCenter;
+    protected final CoordinatorRegistryCenter coordinatorRegistryCenter;
 
     @Override
     public void registry(PropertyConfig propertyConfig) {
