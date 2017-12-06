@@ -2,7 +2,6 @@ package info.macnana.disconf.storage;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
-import com.sun.istack.internal.NotNull;
 import info.macnana.disconf.model.PropertyConfig;
 import info.macnana.disconf.process.ProsProcess;
 import info.macnana.reg.base.CoordinatorRegistryCenter;
@@ -35,7 +34,7 @@ public class AppNodeStorage {
     @NonNull
     private final String appName;
 
-    @NotNull
+    @NonNull
     private final ProsProcess process;
 
     public void addDataProcess(){

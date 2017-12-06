@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>learn-distribute-zookeeper</artifactId>
+        <artifactId>learn-distribute-reg</artifactId>
         <groupId>info.macnana</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/macnana777</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

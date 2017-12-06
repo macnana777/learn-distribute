@@ -12,6 +12,11 @@
     <name>${project.artifactId}</name>
     <dependencies>
         <dependency>
+            <groupId>info.macnana</groupId>
+            <artifactId>learn-distribute-disconf-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-configuration2</artifactId>
         </dependency>
@@ -22,11 +27,6 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>info.macnana</groupId>
-            <artifactId>learn-distribute-disconf-common</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 </project>

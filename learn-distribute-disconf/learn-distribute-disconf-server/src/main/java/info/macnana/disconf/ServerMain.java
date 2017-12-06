@@ -1,8 +1,5 @@
 package info.macnana.disconf;
 
-import info.macnana.disconf.listener.register.ListenerRegister;
-import info.macnana.disconf.listener.register.impl.FileListenerRegister;
-import info.macnana.disconf.listener.strategy.impl.FileListenerStrategy;
 import info.macnana.disconf.register.RegisterProsConfig;
 import info.macnana.disconf.register.impl.LocalServerRegisterPropertyConfig;
 import info.macnana.reg.base.CoordinatorRegistryCenter;
