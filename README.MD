@@ -18,7 +18,7 @@
 
 应用配置文件
 
-路径为：/disconf/应用名/该应用下的所有属性文件
+路径结构为：/disconf/应用名/该应用下的所有属性文件
 
 **learn-distribute-disconf-server** 
 
@@ -28,6 +28,6 @@
 
 **learn-distribute-disconf-client** 
 
-为分布式配置客户端
+分布式配置客户端
 
 负责从注册中心获取对应的应用，同时监听应用的属性变化。
