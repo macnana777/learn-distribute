@@ -5,7 +5,7 @@ package info.macnana.disconf.process;
  * github: https://github.com/macnana777
  * email: 517862340@qq.com
  * <p>
- * Date: 2017-12-05 15:40
+ * Date: 2017-12-06 9:05
  * Description:
  * Copyright(©) 2017 by zhengheng.
  */
@@ -34,5 +34,4 @@ public interface ProsProcess {
      * @param data 变更数据
      */
     void delete(String childPath,String data);
-
 }

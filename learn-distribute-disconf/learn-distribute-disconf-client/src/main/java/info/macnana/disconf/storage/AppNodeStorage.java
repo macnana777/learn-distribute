@@ -31,10 +31,8 @@ public class AppNodeStorage {
 
     private final CoordinatorRegistryCenter coordinatorRegistryCenter;
 
-    @NonNull
     private final String appName;
 
-    @NonNull
     private final ProsProcess process;
 
     public void addDataProcess(){
